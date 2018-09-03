@@ -152,9 +152,6 @@ public class PhotoIntentActivity extends Activity {
 			try {
 				f = setUpPhotoFile();
 				mCurrentPhotoPath = f.getAbsolutePath();
-				Log.d("Skyward", f.getAbsolutePath());
-				Log.d("Skyward", getCacheDir().getAbsolutePath());
-				Log.d("Skyward", getFilesDir().getAbsolutePath());
 				takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(PhotoIntentActivity.this, "com.skyward.fileprovider", f));
 			} catch (IOException e) {
 				e.printStackTrace();
