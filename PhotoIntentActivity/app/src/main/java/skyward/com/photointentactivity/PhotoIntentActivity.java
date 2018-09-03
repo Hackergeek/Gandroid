@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -151,7 +152,10 @@ public class PhotoIntentActivity extends Activity {
 			try {
 				f = setUpPhotoFile();
 				mCurrentPhotoPath = f.getAbsolutePath();
-				takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+				Log.d("Skyward", f.getAbsolutePath());
+				Log.d("Skyward", getCacheDir().getAbsolutePath());
+				Log.d("Skyward", getFilesDir().getAbsolutePath());
+				takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(PhotoIntentActivity.this, "com.skyward.fileprovider", f));
 			} catch (IOException e) {
 				e.printStackTrace();
 				f = null;
